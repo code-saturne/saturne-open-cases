@@ -132,11 +132,6 @@
     </extrusion>
     <faces_cutting status="off"/>
     <joining/>
-    <mesh_cartesian>
-      <x_direction law="constant" max="1.0" min="0.0" ncells="1" prog="1.0"/>
-      <y_direction law="constant" max="1.0" min="0.0" ncells="1" prog="1.0"/>
-      <z_direction law="constant" max="1.0" min="0.0" ncells="1" prog="1.0"/>
-    </mesh_cartesian>
     <mesh_input path="../MESH/C/mesh_input.csm"/>
     <mesh_smoothing status="off"/>
     <meshes_list/>
@@ -155,6 +150,7 @@
     </conjugate_heat_transfer>
     <gas_combustion model="off" option="off"/>
     <groundwater_model model="off"/>
+    <hgn_model model="off"/>
     <joule_effect model="off"/>
     <porosities/>
     <radiative_transfer model="off"/>

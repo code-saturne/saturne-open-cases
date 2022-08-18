@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_C016_01" solver_version="4.0;6.0;7.0-patch" study="BUNDLE" version="2.0">
+<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_C016_01" solver_version="4.0;6.0;7.0" study="BUNDLE" version="2.0">
   <additional_scalars/>
   <analysis_control>
     <output>
@@ -17,7 +17,7 @@
       <probe_recording_frequency>1</probe_recording_frequency>
       <writer id="-1" label="results">
         <directory name="postprocessing"/>
-        <format name="ensight" options="binary"/>
+        <format name="ensight" options="binary, separate_meshes"/>
         <frequency period="none"/>
         <output_at_end status="on"/>
         <time_dependency choice="fixed_mesh"/>
@@ -77,7 +77,6 @@
   </lagrangian>
   <numerical_parameters>
     <gradient_transposed status="on"/>
-    <hydrostatic_pressure status="off"/>
     <pressure_relaxation>1</pressure_relaxation>
     <velocity_pressure_algo choice="simplec">
       <piso_sweep_number>1</piso_sweep_number>
@@ -142,6 +141,7 @@
     </conjugate_heat_transfer>
     <gas_combustion model="off" option="off"/>
     <groundwater_model model="off"/>
+    <hgn_model model="off"/>
     <joule_effect model="off"/>
     <porosities/>
     <radiative_transfer model="off"/>

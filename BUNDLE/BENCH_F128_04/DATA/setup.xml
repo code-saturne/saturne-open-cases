@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_F128_04" solver_version="4.0;6.0;7.0-alpha;6.2;7.0-alpha" study="BUNDLE" version="2.0">
+<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_F128_04" solver_version="4.0;6.0;7.0-alpha;6.2;7.0" study="BUNDLE" version="2.0">
   <additional_scalars/>
   <analysis_control>
     <output>
@@ -17,7 +17,7 @@
       <probe_recording_frequency>1</probe_recording_frequency>
       <writer id="-1" label="results">
         <directory name="postprocessing"/>
-        <format name="ensight" options="binary"/>
+        <format name="ensight" options="binary, separate_meshes"/>
         <frequency period="none"/>
         <output_at_end status="on"/>
         <time_dependency choice="fixed_mesh"/>
@@ -76,10 +76,7 @@
     <output/>
   </lagrangian>
   <numerical_parameters>
-    <algo_density_variation choice=""/>
-    <extended_neighborhood choice=""/>
     <gradient_transposed status="on"/>
-    <hydrostatic_pressure status="off"/>
     <pressure_relaxation>1</pressure_relaxation>
     <velocity_pressure_algo choice="simplec">
       <piso_sweep_number>1</piso_sweep_number>
@@ -132,7 +129,7 @@
     <save_mesh_if_modified>no</save_mesh_if_modified>
     <thin_walls/>
     <volumic_conditions>
-      <zone darcy_law="off" groundwater_law="off" head_losses="off" id="1" initialization="on" label="all_cells" mass_source_term="off" momentum_source_term="off" porosity="off" scalar_source_term="off" thermal_source_term="off">all[]</zone>
+      <zone darcy_law="off" groundwater_law="off" head_losses="off" id="1" initialization="on" label="all_cells" mass_source_term="off" momentum_source_term="off" physical_properties="on" porosity="off" scalar_source_term="off" thermal_source_term="off">all[]</zone>
     </volumic_conditions>
   </solution_domain>
   <thermophysical_models>
