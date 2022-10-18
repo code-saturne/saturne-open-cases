@@ -122,7 +122,7 @@
     <extrusion/>
     <faces_cutting status="off"/>
     <joining/>
-    <mesh_input path="../MESH/F128/mesh_input"/>
+    <mesh_input path="../BENCH_F128_PREPROCESS/RESU/extrude_128/mesh_output.csm"/>
     <mesh_smoothing status="off"/>
     <meshes_list/>
     <periodicity/>
