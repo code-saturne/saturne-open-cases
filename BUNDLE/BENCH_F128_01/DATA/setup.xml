@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_F128_01" solver_version="4.0;6.0;6.2;7.0" study="BUNDLE" version="2.0">
+<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_F128_01" solver_version="4.0;6.0;6.2;7.0;8.0" study="BUNDLE" version="2.0">
   <additional_scalars/>
   <analysis_control>
     <output>
@@ -164,11 +164,7 @@
       <wall_function>3</wall_function>
     </turbulence>
     <velocity_pressure>
-      <initialization>
-        <formula zone_id="1">velocity[0] = 0.;
-velocity[1] = 0.;
-velocity[2] = 0.;</formula>
-      </initialization>
+      <initialization/>
       <property label="Stress" name="stress" support="boundary"/>
       <property label="Stress, normal" name="stress_normal" support="boundary">
         <postprocessing_recording status="off"/>
