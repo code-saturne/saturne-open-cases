@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_C016_01" solver_version="4.0;6.0;7.0;8.0" study="BUNDLE" version="2.0">
+<?xml version="1.0" encoding="utf-8"?><Code_Saturne_GUI case="BENCH_C016_01" solver_version="4.0;6.0;7.0;8.0;8.2-alpha" study="BUNDLE" version="2.0">
   <additional_scalars/>
   <analysis_control>
     <output>
@@ -123,6 +123,7 @@
     <faces_cutting status="off"/>
     <joining/>
     <mesh_input path="../BENCH_C016_PREPROCESS/RESU/extrude_16/mesh_output.csm"/>
+    <mesh_origin choice="mesh_input"/>
     <mesh_smoothing status="off"/>
     <meshes_list/>
     <periodicity/>
