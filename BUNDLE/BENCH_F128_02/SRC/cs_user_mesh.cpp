@@ -113,7 +113,8 @@ cs_user_mesh_input(void)
                                           {0., 0., 1., 0.}};
 
       cs_preprocessor_data_add_file(path,
-                                    n_renames, renames,
+                                    n_renames,
+                                    const_cast<const char **>(renames),
                                     transf_matrix);
     }
   }
