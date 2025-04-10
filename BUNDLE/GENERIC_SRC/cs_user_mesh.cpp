@@ -92,6 +92,9 @@ cs_user_mesh_input(void)
           _n_tubes = n_tubes;
       }
     }
+
+    CS_FREE(run_id);
+    CS_FREE(case_name);
   }
 
   const int n = _n_tubes, m = _n_tubes;
