@@ -164,7 +164,7 @@ cs_user_linear_solvers(void)
     };
 
     int n_max_iter[3] = {1, 1, 1};
-    double precision_mult_coarse = -1.;
+    double precision_mult_coarse = 1.;
 
     for (int i = 0; i < 3; i++) {
       int nit_d = 1, nit_a = 1, nit_c = 1;
@@ -207,6 +207,11 @@ cs_user_linear_solvers(void)
       if (s_mg_nit[i] != nullptr)
         n_max_iter[i] = atoi(s_mg_nit[i]);
     }
+
+    if (   smoother_type[2] == CS_SLES_JACOBI
+        || smoother_type[2] == CS_SLES_P_GAUSS_SEIDEL
+        || smoother_type[2] == CS_SLES_P_SYM_GAUSS_SEIDEL)
+      double precision_mult_coarse = -1.;
 
     if (s_mg_cspm != nullptr)
       precision_mult_coarse = atof(s_mg_cspm);
