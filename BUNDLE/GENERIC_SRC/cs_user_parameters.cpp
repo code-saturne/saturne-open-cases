@@ -211,7 +211,7 @@ cs_user_linear_solvers(void)
     if (   smoother_type[2] == CS_SLES_JACOBI
         || smoother_type[2] == CS_SLES_P_GAUSS_SEIDEL
         || smoother_type[2] == CS_SLES_P_SYM_GAUSS_SEIDEL)
-      double precision_mult_coarse = -1.;
+      precision_mult_coarse = -1.;
 
     if (s_mg_cspm != nullptr)
       precision_mult_coarse = atof(s_mg_cspm);
