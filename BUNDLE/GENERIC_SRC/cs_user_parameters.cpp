@@ -349,7 +349,7 @@ cs_user_linear_solvers(void)
           n_max_iter[i] *= 3;
         break;
       case CS_SLES_TS_B_GAUSS_SEIDEL:
-        [[fallthrough]]
+        [[fallthrough]];
       case CS_SLES_TS_F_GAUSS_SEIDEL:
         smoother_type[i] = CS_SLES_JACOBI;
         n_max_iter[i] = 2;
@@ -378,7 +378,7 @@ cs_user_linear_solvers(void)
           smoother_type[i] = CS_SLES_JACOBI;
           nit_d = 2, nit_a = 4;
         }
-        else {
+        else
           bft_error(__FILE__, __LINE__, 0,
                     "%s: Invalid value for CS_BENCH_MG_*_SMOOTHER_TYPE_D: %s\n"
                     " (expected \"fcg\" or \"jacobi\".)",
@@ -394,15 +394,15 @@ cs_user_linear_solvers(void)
 
     cs_multigrid_set_solver_options_d
       (mg,
-       s_mgt[0],
-       s_mgt[1],
-       s_mgt[2],
-       s_mg_nit[0],    // n max iter for descent (default 1)
-       s_mg_nit[0],    // n max iter for ascent (default 1)
-       s_mg_nit[2],    // n max iter coarse solver (default 1)
-       0,              // polynomial precond. degree descent (default)
-       0,              // polynomial precond. degree ascent (default)
-       0);             // polynomial precond. degree coarse (default 0)
+       smoother_type[0],
+       smoother_type[1],
+       smoother_type[2],
+       n_max_iter[0],    // n max iter for descent (default 1)
+       n_max_iter[0],    // n max iter for ascent (default 1)
+       n_max_iter[2],    // n max iter coarse solver (default 1)
+       0,                // polynomial precond. degree descent (default)
+       0,                // polynomial precond. degree ascent (default)
+       0);               // polynomial precond. degree coarse (default 0)
 
 #endif // defined(HAVE_ACCEL)
 
@@ -411,9 +411,9 @@ cs_user_linear_solvers(void)
   /* Setting pressure solver with hypre with Default PCG+BoomerAMG options */
   /*-----------------------------------------------------------------------*/
 
-  if (strstr(s_sles_type, "hypre") != nullptr) {
-
 #if defined(HAVE_HYPRE)
+
+  if (strstr(s_sles_type, "hypre") != nullptr) {
 
     cs_sles_hypre_define(CS_F_(p)->id,
                          NULL,
@@ -429,7 +429,7 @@ cs_user_linear_solvers(void)
   bft_error(__FILE__, __LINE__, 0,
             "%s: Invalid value for CS_BENCH_SLES_TYPE:\n"
             "   %s requested but not available in this build.",
-            __func__, s_mg_type);
+            __func__, s_sles_type);
 
 #endif /* defined(HAVE_HYPRE) */
 }
