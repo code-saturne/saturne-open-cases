@@ -343,8 +343,12 @@ cs_user_linear_solvers(void)
         break;
       case CS_SLES_P_SYM_GAUSS_SEIDEL:
         smoother_type[i] = CS_SLES_JACOBI;
-        if (n_max_iter[i] == 1)
-          n_max_iter[i] = 2;
+        if (n_max_iter[i] == 1) {
+          if (i == 0)
+            n_max_iter[i] = 2;
+          else
+            n_max_iter[i] = 3;
+        }
         else
           n_max_iter[i] *= 3;
         break;
@@ -368,7 +372,7 @@ cs_user_linear_solvers(void)
     s_mg_nit[1] = getenv("CS_BENCH_MG_ASCENT_SMOOTHER_N_ITER_D");
 
     for (int i = 0; i < 2; i++) {
-      int nit_d = 1, nit_a = 1;
+      int nit_d = n_max_iter[0], nit_a = n_max_iter[1];
       if (s_mgt[i] != nullptr) {
         if (strcmp(s_mgt[i], "fcg") == 0) {
           smoother_type[i] = CS_SLES_FCG;
@@ -398,7 +402,7 @@ cs_user_linear_solvers(void)
        smoother_type[1],
        smoother_type[2],
        n_max_iter[0],    // n max iter for descent (default 1)
-       n_max_iter[0],    // n max iter for ascent (default 1)
+       n_max_iter[1],    // n max iter for ascent (default 1)
        n_max_iter[2],    // n max iter coarse solver (default 1)
        0,                // polynomial precond. degree descent (default)
        0,                // polynomial precond. degree ascent (default)

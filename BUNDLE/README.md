@@ -125,7 +125,7 @@ When using the (default) multigrid preconditioner, many additional settings may 
 | `CS_BENCH_MG_MERGE_STEP` | integer | Merge grids on successive MPI ranks by given step, so as to use a smaller MPI communicator for coarse grids. |
 | `CS_BENCH_MG_MERGE_THRESHOLD` | integer | Mean number of rows under which grids are merged (default: 600). |
 | `CS_BENCH_MG_MERGE_THRESHOLD_GLOBAL` | integer | Global number of rows under which grids are merged (default: 600). |
-| `CS_BENCH_MG_MAX_LEVEL_DEVICE` | integer | Specify finest level that should be run on the GPU. All coarser levels smoothes ans solves are run on the CPU (default: 1). |
+| `CS_BENCH_MG_MAX_LEVEL_DEVICE` | integer | Specify finest level that should be run on the GPU. All coarser levels smoothes and solves are run on the CPU (default: 1). |
 | `CS_BENCH_MG_DESCENT_SMOOTHER_TYPE_D` | `jacobi` or `fcg` | Descent smoother type for device. |
 | `CS_BENCH_MG_ASCENT_SMOOTHER_TYPE_D` | `jacobi` or `fcg` | Ascent smoother type for device. |
 | `CS_BENCH_MG_DESCENT_SMOOTHER_N_ITER_D` | integer | Number of iterations for descent smoother on device. |
