@@ -38,8 +38,9 @@ def domain_copy_results_add(domain):
 
     # Clean some temporary files
 
-    import shutil
-    shutil.rmtree('checkpoint')
+    if os.path.exists('checkpoint'):
+        import shutil
+        shutil.rmtree('checkpoint')
 
     return
 
