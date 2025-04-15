@@ -370,19 +370,19 @@ cs_user_linear_solvers(void)
     for (int i = 0; i < 2; i++) {
       int nit_d = 1, nit_a = 1;
       if (s_mgt[i] != nullptr) {
-        if (strcmp(s_mgt, "fcg") == 0) {
+        if (strcmp(s_mgt[i], "fcg") == 0) {
           smoother_type[i] = CS_SLES_FCG;
           nit_d = 2, nit_a = 4;
         }
-        else if (strcmp(s_mgt, "jacobi") == 0) {
+        else if (strcmp(s_mgt[i], "jacobi") == 0) {
           smoother_type[i] = CS_SLES_JACOBI;
           nit_d = 2, nit_a = 4;
         }
         else {
           bft_error(__FILE__, __LINE__, 0,
                     "%s: Invalid value for CS_BENCH_MG_*_SMOOTHER_TYPE_D: %s\n"
-                    " (expected \"fcg\" or \"jacobi\"."),
-            __func__, s_mgt[0]);
+                    " (expected \"fcg\" or \"jacobi\".)",
+                    __func__, s_mgt[0]);
       }
       if (i == 0)
         n_max_iter[i] = nit_d;
