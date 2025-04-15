@@ -406,6 +406,8 @@ cs_user_linear_solvers(void)
 
 #endif // defined(HAVE_ACCEL)
 
+    return;
+
   }
 
   /* Setting pressure solver with hypre with Default PCG+BoomerAMG options */
@@ -421,6 +423,8 @@ cs_user_linear_solvers(void)
                          CS_SLES_HYPRE_BOOMERAMG,  /* preconditioner type */
                          NULL,
                          NULL);
+
+    return;
 
   }
 
