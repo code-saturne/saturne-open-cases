@@ -97,11 +97,13 @@ resolution, which uses a multigrid preconditioner by default.
 
 To activate those settings the `CS_BENCH_SLES_TYPE` variable must be set.
 
-| Environment variable      | Value            | Description |
-|---------------------------|------------------|------------ |
-| `CS_BENCH_SLES_TYPE`      |  `native_fcg_mg` | Use flexible conjugate gradient preconditioned by multigrid solver (default). |
-|                           |  `hypre` | Use HYPRE solver if available in build. |
-| `CS_BENCH_SLES_VERBOSITY` |  integer | Force verbosity level for this solver.
+| Environment variable      | Value                | Description |
+|---------------------------|----------------------|------------ |
+| `CS_BENCH_SLES_TYPE`      |  `native_fcg_mg`     | Use flexible conjugate gradient preconditioned by multigrid solver (default). |
+|                           |  `native_fcg_poly`   | Use flexible conjugate gradient with polynomial preconditioner. |
+|                           |  `native_fcg_jacobi` | Use flexible conjugate gradient with Jacobi preconditioner. |
+|                           |  `hypre`             | Use HYPRE solver if available in build. |
+| `CS_BENCH_SLES_VERBOSITY` |  integer             | Force verbosity level for this solver. |
 
 ### Settings for multigrid preconditioner.
 
@@ -120,7 +122,7 @@ When using the (default) multigrid preconditioner, many additional settings may 
 | `CS_BENCH_MG_COARSE_SOLVER_TEST_CVG` | real number | precision multiplier for coarse solver (no test if negative; default 1.0 for pcg, -1.0 for sgs) |
 | `CS_BENCH_MG_COARSENING_FINE_LV` | integer | level above which specific fine-level settings are used (default: -1, unused). |
 | `CS_BENCH_MG_COARSENING_TYPE` | `dx`, `mx`, `pw`, or `dx_<n>`, `mx_<n>`, `pw_<n>` | Coarsening type (default: dx_3). The optional postfix indicates the max aggregation count per row, and is useful mainly for the recursive pairwise algorithm (where pw == pw_4, and pw_8 is more aggressive).
-| `CS_BENCH_MG_COARSENING_TYPE_FG` | same as avove | As above, but specific to fine levels. |
+| `CS_BENCH_MG_COARSENING_TYPE_FG` | same as above | As above, but specific to fine levels. |
 | `CS_BENCH_MG_MAX_LEVELS` | integer | Maximum number of grid levels (default: 25) |
 | `CS_BENCH_MG_MERGE_STEP` | integer | Merge grids on successive MPI ranks by given step, so as to use a smaller MPI communicator for coarse grids. |
 | `CS_BENCH_MG_MERGE_THRESHOLD` | integer | Mean number of rows under which grids are merged (default: 600). |

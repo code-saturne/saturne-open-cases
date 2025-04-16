@@ -250,13 +250,13 @@ cs_user_linear_solvers(void)
 
     for (int i = 0; i < 2; i++) {
       if (s_coarsen_type[i] != nullptr) {
-        if (strstr(s_coarsen_type[i], "dx") == 0) {
+        if (strstr(s_coarsen_type[i], "dx") != nullptr) {
           coarsen_type[i] = CS_GRID_COARSENING_SPD_DX;
         }
-        else if (strstr(s_coarsen_type[i], "mx") == 0) {
+        else if (strstr(s_coarsen_type[i], "mx") != nullptr) {
           coarsen_type[i] = CS_GRID_COARSENING_SPD_DX;
         }
-        else if (strstr(s_coarsen_type[i], "pw") == 0) {
+        else if (strstr(s_coarsen_type[i], "pw") != nullptr) {
           coarsen_type[i] = CS_GRID_COARSENING_SPD_PW;
           aggregation_limit[i] = 4;
         }
@@ -411,6 +411,32 @@ cs_user_linear_solvers(void)
 #endif // defined(HAVE_ACCEL)
 
     return;
+
+  }
+
+  /* FCG with polynomial preconditioner
+     ---------------------------------- */
+
+  if (strstr(s_sles_type, "native_fcg_poly") != nullptr) {
+
+    cs_sles_it_t *c = cs_sles_it_define(CS_F_(p)->id,
+                                        nullptr,
+                                        CS_SLES_FCG,
+                                        1,
+                                        10000);
+
+  }
+
+  /* FCG with jacobi preconditioner
+     ------------------------------ */
+
+  if (strstr(s_sles_type, "native_fcg_jacobi") != nullptr) {
+
+    cs_sles_it_t *c = cs_sles_it_define(CS_F_(p)->id,
+                                        nullptr,
+                                        CS_SLES_FCG,
+                                        0,
+                                        10000);
 
   }
 
