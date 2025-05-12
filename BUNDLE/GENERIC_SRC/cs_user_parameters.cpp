@@ -163,47 +163,52 @@ cs_user_linear_solvers(void)
       CS_SLES_PCG
     };
 
+    for (int i = 0; i < 3; i++) {
+      if (s_mgt[i] != nullptr) {
+        if (strcmp(s_mgt[i], "pcg") == 0)
+          smoother_type[i] = CS_SLES_PCG;
+        else if (strcmp(s_mgt[i], "fcg") == 0)
+          smoother_type[i] = CS_SLES_FCG;
+        else if (strcmp(s_mgt[i], "jacobi") == 0)
+          smoother_type[i] = CS_SLES_JACOBI;
+        else if (strcmp(s_mgt[i], "gs") == 0)
+          smoother_type[i] = CS_SLES_P_GAUSS_SEIDEL;
+        else if (strcmp(s_mgt[i], "sgs") == 0)
+          smoother_type[i] = CS_SLES_P_SYM_GAUSS_SEIDEL;
+        else if (strcmp(s_mgt[i], "tfgs") == 0)
+          smoother_type[i] = CS_SLES_TS_F_GAUSS_SEIDEL;
+        else if (strcmp(s_mgt[i], "tbgs") == 0)
+          smoother_type[i] = CS_SLES_TS_B_GAUSS_SEIDEL;
+      }
+    }
+
     int n_max_iter[3] = {1, 1, 1};
     double precision_mult_coarse = 1.;
 
     for (int i = 0; i < 3; i++) {
       int nit_d = 1, nit_a = 1, nit_c = 1;
-      if (s_mgt[i] != nullptr) {
-        if (strcmp(s_mgt[i], "pcg") == 0) {
-          smoother_type[i] = CS_SLES_PCG;
-          nit_d = 2, nit_a = 4, nit_c = 500;
-          precision_mult_coarse = 1.;
-        }
-        else if (strcmp(s_mgt[i], "fcg") == 0) {
-          smoother_type[i] = CS_SLES_FCG;
-          nit_d = 2, nit_a = 4, nit_c = 500;
-          precision_mult_coarse = 1.;
-        }
-        else if (strcmp(s_mgt[i], "jacobi") == 0) {
-          smoother_type[i] = CS_SLES_JACOBI;
-          nit_d = 2, nit_a = 4, nit_c = 4;
-        }
-        else if (strcmp(s_mgt[i], "gs") == 0) {
-          nit_d = 2, nit_a = 4, nit_c = 500;
-          smoother_type[i] = CS_SLES_P_GAUSS_SEIDEL;
-        }
-        else if (strcmp(s_mgt[i], "sgs") == 0) {
-          smoother_type[i] = CS_SLES_P_SYM_GAUSS_SEIDEL;
-        }
-        else if (strcmp(s_mgt[i], "tfgs") == 0) {
-          smoother_type[i] = CS_SLES_TS_F_GAUSS_SEIDEL;
-        }
-        else if (strcmp(s_mgt[i], "tbgs") == 0) {
-          smoother_type[i] = CS_SLES_TS_B_GAUSS_SEIDEL;
-        }
-
-        if (i == 0)
-          n_max_iter[i] = nit_d;
-        else if (i == 1)
-          n_max_iter[i] = nit_a;
-        else
-          n_max_iter[i] = nit_c;
+      if (smoother_type[i] == CS_SLES_PCG) {
+        nit_d = 2, nit_a = 4, nit_c = 500;
+        precision_mult_coarse = 1.;
       }
+      else if (smoother_type[i] == CS_SLES_FCG) {
+        nit_d = 2, nit_a = 4, nit_c = 500;
+        precision_mult_coarse = 1.;
+      }
+      else if (smoother_type[i] == CS_SLES_JACOBI) {
+        nit_d = 2, nit_a = 4, nit_c = 4;
+      }
+      else if (smoother_type[i] == CS_SLES_P_GAUSS_SEIDEL) {
+        nit_d = 2, nit_a = 4, nit_c = 500;
+      }
+
+      if (i == 0)
+        n_max_iter[i] = nit_d;
+      else if (i == 1)
+        n_max_iter[i] = nit_a;
+      else
+        n_max_iter[i] = nit_c;
+
       if (s_mg_nit[i] != nullptr)
         n_max_iter[i] = atoi(s_mg_nit[i]);
     }
