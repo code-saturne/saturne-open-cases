@@ -329,6 +329,18 @@ cs_user_linear_solvers(void)
       }
     }
 
+    s_merge = getenv("CS_BENCH_MG_MERGE_BOTTOM_MAX_RANKS");
+    if (s_merge != nullptr) {
+      int n_max_ranks = atoi(s_merge);
+      float max_row_factor = 1.0;
+      const char *s_row_factor = getenv("CS_BENCH_MG_MERGE_BOTTOM_MAX_ROW_FACTOR");
+      if (s_row_factor != nullptr)
+        max_row_factor = atof(s_row_factor);
+      cs_multigrid_set_merge_bottom_options(mg,
+                                            n_max_ranks,
+                                            max_row_factor);
+    }
+
     /* Additional settings when running on GPU
        --------------------------------------- */
 
@@ -424,11 +436,11 @@ cs_user_linear_solvers(void)
 
   if (strstr(s_sles_type, "native_fcg_poly") != nullptr) {
 
-    cs_sles_it_t *c = cs_sles_it_define(CS_F_(p)->id,
-                                        nullptr,
-                                        CS_SLES_FCG,
-                                        1,
-                                        10000);
+    cs_sles_it_define(CS_F_(p)->id,
+                      nullptr,
+                      CS_SLES_FCG,
+                      1,
+                      10000);
 
   }
 
@@ -437,11 +449,11 @@ cs_user_linear_solvers(void)
 
   if (strstr(s_sles_type, "native_fcg_jacobi") != nullptr) {
 
-    cs_sles_it_t *c = cs_sles_it_define(CS_F_(p)->id,
-                                        nullptr,
-                                        CS_SLES_FCG,
-                                        0,
-                                        10000);
+    cs_sles_it_define(CS_F_(p)->id,
+                      nullptr,
+                      CS_SLES_FCG,
+                      0,
+                      10000);
 
   }
 

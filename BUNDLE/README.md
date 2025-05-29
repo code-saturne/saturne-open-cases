@@ -16,7 +16,7 @@ scaling measurement.
 
 Case directories are named based on a `BENCH_`TL_N scheme, where:
 - T is the type of mesh: `F` (fine) or `C` (coarse).
-- L is the number of vertical layers (obtained by extrusion of Thebase layer)
+- L is the number of vertical layers (obtained by extrusion of the base layer)
 - N is the number of motif copies in the x and y directions.
 
 So `BENCH_F128_01`, with a base motif of 100040 cells, extruded over 128 layers,
@@ -127,6 +127,8 @@ When using the (default) multigrid preconditioner, many additional settings may 
 | `CS_BENCH_MG_MERGE_STEP` | integer | Merge grids on successive MPI ranks by given step, so as to use a smaller MPI communicator for coarse grids. |
 | `CS_BENCH_MG_MERGE_THRESHOLD` | integer | Mean number of rows under which grids are merged (default: 600). |
 | `CS_BENCH_MG_MERGE_THRESHOLD_GLOBAL` | integer | Global number of rows under which grids are merged (default: 600). |
+| `CS_BENCH_MG_MERGE_BOTTOM_MAX_RANKS` | integer | Maximum number of ranks for coarsest level (default: all ranks). |
+| `CS_BENCH_MG_MERGE_BOTTOM_MAX_ROW_FACTOR` | float | If merged bottom matrix row count would exceed the fine grid local row count by more than this value, do not merge bottom grids. |
 | `CS_BENCH_MG_MAX_LEVEL_DEVICE` | integer | Specify finest level that should be run on the GPU. All coarser levels smoothes and solves are run on the CPU (default: 1). |
 | `CS_BENCH_MG_DESCENT_SMOOTHER_TYPE_D` | `jacobi` or `fcg` | Descent smoother type for device. |
 | `CS_BENCH_MG_ASCENT_SMOOTHER_TYPE_D` | `jacobi` or `fcg` | Ascent smoother type for device. |
