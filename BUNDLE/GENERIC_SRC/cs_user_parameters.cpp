@@ -475,14 +475,26 @@ cs_user_linear_solvers(void)
 
   }
 
-#else
+#endif /* defined(HAVE_HYPRE) */
+
+#if defined(HAVE_AMGX)
+
+  if (strstr(s_sles_type, "amgx") != nullptr) {
+
+    cs_sles_amgx_t *amgx_p = cs_sles_amgx_define(CS_F_(p)->id, nullptr);
+
+    // cs_sles_amgx_set_config_file(amgx_p, "PCG_CLASSICAL_V_JACOBI.json");
+
+    return;
+
+  }
+
+#endif /* defined(HAVE_AMGX) */
 
   bft_error(__FILE__, __LINE__, 0,
             "%s: Invalid value for CS_BENCH_SLES_TYPE:\n"
             "   %s requested but not available in this build.",
             __func__, s_sles_type);
-
-#endif /* defined(HAVE_HYPRE) */
 }
 
 /*----------------------------------------------------------------------------*/
