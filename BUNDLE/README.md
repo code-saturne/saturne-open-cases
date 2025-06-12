@@ -103,6 +103,7 @@ To activate those settings the `CS_BENCH_SLES_TYPE` variable must be set.
 |                           |  `native_fcg_poly`   | Use flexible conjugate gradient with polynomial preconditioner. |
 |                           |  `native_fcg_jacobi` | Use flexible conjugate gradient with Jacobi preconditioner. |
 |                           |  `hypre`             | Use HYPRE solver if available in build. |
+|                           |  `amgx`              | Use AmgX solver if available in (GPU) build. |
 | `CS_BENCH_SLES_VERBOSITY` |  integer             | Force verbosity level for this solver. |
 
 ### Settings for multigrid preconditioner.
