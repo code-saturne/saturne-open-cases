@@ -47,7 +47,7 @@ SetActiveView(renderView1)
 # ----------------------------------------------------------------
 
 # create a new 'EnSight Reader'
-rESULTS_FLUID_DOMAINcase = EnSightReader(registrationName='RESULTS_FLUID_DOMAIN.case', CaseFileName='/home/D43345/Code_Saturne/Validation/saturne-open-cases/BUNDLE/BENCH_C016_04/RESU/gpu/postprocessing/RESULTS_FLUID_DOMAIN.case')
+rESULTS_FLUID_DOMAINcase = EnSightReader(registrationName='catalyst', CaseFileName='./postprocessing/RESULTS_FLUID_DOMAIN.case')
 rESULTS_FLUID_DOMAINcase.CellArrays = ['Velocity', 'Pressure', 'k', 'epsilon', 'TurbVisc', 'CourantNb', 'FourierNb', 'total_pressure', 'Local_Time_Step']
 
 # create a new 'Slice'
