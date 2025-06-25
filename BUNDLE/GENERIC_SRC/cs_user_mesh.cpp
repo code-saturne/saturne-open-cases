@@ -151,8 +151,6 @@ cs_user_mesh_input(void)
 void
 cs_user_join(void)
 {
-  int    join_num;
-
   /* Add a joining operation */
   /* ----------------------- */
 
@@ -192,90 +190,6 @@ cs_user_periodicity(void)
                                 verbosity,
                                 visualization,
                                 translation);
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Set options for cutting of warped faces.
- */
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_mesh_warping(void)
-{
-
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Insert boundaries into a mesh.
- *
- * \param[in,out] mesh  pointer to a cs_mesh_t structure
- */
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_mesh_boundary(cs_mesh_t  *mesh)
-{
-
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Modify geometry and mesh.
- *
- * \param[in,out] mesh  pointer to a cs_mesh_t structure
-*/
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_mesh_modify(cs_mesh_t  *mesh)
-{
-
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Mesh smoothing.
- *
- * \param[in,out] mesh  pointer to a cs_mesh_t structure
-*/
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_mesh_smoothe(cs_mesh_t  *mesh)
-{
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Enable or disable mesh saving.
- *
- * By default, mesh is saved when modified.
- *
- * \param[in,out] mesh  pointer to a cs_mesh_t structure
-*/
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_mesh_save(cs_mesh_t  *mesh)
-{
-
-}
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \brief Tag bad cells within the mesh based on user-defined geometric criteria.
- *
- * \param[in,out] mesh  pointer to a cs_mesh_t structure
- * \param[in,out] mesh_quantities pointer to a cs_mesh_quantities_t structure
-*/
-/*----------------------------------------------------------------------------*/
-
-void
-cs_user_mesh_bad_cells_tag(cs_mesh_t             *mesh,
-                           cs_mesh_quantities_t  *mesh_quantities)
-{
 }
 
 /*----------------------------------------------------------------------------*/
