@@ -442,6 +442,8 @@ cs_user_linear_solvers(void)
                       1,
                       10000);
 
+    return;
+
   }
 
   /* FCG with jacobi preconditioner
@@ -454,6 +456,8 @@ cs_user_linear_solvers(void)
                       CS_SLES_FCG,
                       0,
                       10000);
+
+    return;
 
   }
 
@@ -481,9 +485,10 @@ cs_user_linear_solvers(void)
 
   if (strstr(s_sles_type, "amgx") != nullptr) {
 
-    cs_sles_amgx_t *amgx_p = cs_sles_amgx_define(CS_F_(p)->id, nullptr);
+    cs_sles_amgx_t *c = cs_sles_amgx_define(CS_F_(p)->id, nullptr);
 
-    // cs_sles_amgx_set_config_file(amgx_p, "PCG_CLASSICAL_V_JACOBI.json");
+    cs_sles_amgx_set_config_file(c, "PCG_CLASSICAL_V_JACOBI.json");
+    // cs_sles_amgx_set_config_file(c, "amgx.json");
 
     return;
 
@@ -491,10 +496,22 @@ cs_user_linear_solvers(void)
 
 #endif /* defined(HAVE_AMGX) */
 
+#if defined(HAVE_CUDSS)
+
+  if (strstr(s_sles_type, "cudss") != nullptr) {
+
+    cs_sles_cudss_t *c = cs_sles_cudss_define(CS_F_(p)->id, nullptr);
+
+    return;
+  }
+
+#endif /* defined(HAVE_CUDSS) */
+
   bft_error(__FILE__, __LINE__, 0,
             "%s: Invalid value for CS_BENCH_SLES_TYPE:\n"
             "   %s requested but not available in this build.",
             __func__, s_sles_type);
+
 }
 
 /*----------------------------------------------------------------------------*/
