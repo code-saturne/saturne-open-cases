@@ -123,7 +123,7 @@ When using the (default) multigrid preconditioner, many additional settings may 
 |----------------------|------------|-------------|
 | `CS_BENCH_MG_TYPE`   |  `v_cycle` | Use V-cycle for multigid (default). |
 |                  `   |  `k_cycle` | Use K-cycle for multigid. |
-| `CS_BENCH_MG_DESCENT_SMOOTHER_TYPE` | `pcg`, `fcg`, `jacobi`, `gs`, `sgs`, `tfgs`, `tbgs` | Descent smoother type (default: sgs on CPU, jacobi on GPU) |
+| `CS_BENCH_MG_DESCENT_SMOOTHER_TYPE` | `pcg`, `fcg`, `jacobi`, `gs`, `sgs`, `l1_jacobi`, `scheduled_jacobi`, `sr_jacobi`, `tfgs`, `tbgs` | Descent smoother type (default: sgs on CPU, jacobi on GPU) |
 | `CS_BENCH_MG_ASCENT_SMOOTHER_TYPE`  | same as above | Ascent smoother type (default: sgs on CPU, jacobi on GPU) |
 | `CS_BENCH_MG_COARSE_SOLVER_TYPE`    | Same as above | Coarse solver type (default: pcg) |
 | `CS_BENCH_MG_DESCENT_SMOOTHER_N_ITER` | integer | number of iterations for descent smoother (defaut: 1 with sgs, 2 with jacobi) |
@@ -139,7 +139,7 @@ When using the (default) multigrid preconditioner, many additional settings may 
 | `CS_BENCH_MG_MERGE_THRESHOLD_GLOBAL` | integer | Global number of rows under which grids are merged (default: 600). |
 | `CS_BENCH_MG_MERGE_BOTTOM_MAX_RANKS` | integer | Maximum number of ranks for coarsest level (default: all ranks). |
 | `CS_BENCH_MG_MERGE_BOTTOM_MAX_ROW_FACTOR` | float | If merged bottom matrix row count would exceed the fine grid local row count by more than this value, do not merge bottom grids. |
-| `CS_BENCH_MG_MAX_LEVEL_DEVICE` | integer | Specify finest level that should be run on the GPU. All coarser levels smoothes and solves are run on the CPU (default: 1). |
+| `CS_BENCH_MG_MAX_LEVEL_DEVICE` | integer | Specify finest level that should be run on the GPU. All coarser levels smoothes and solves are run on the CPU (default: 25). |
 | `CS_BENCH_MG_DESCENT_SMOOTHER_TYPE_D` | `jacobi` or `fcg` | Descent smoother type for device. |
 | `CS_BENCH_MG_ASCENT_SMOOTHER_TYPE_D` | `jacobi` or `fcg` | Ascent smoother type for device. |
 | `CS_BENCH_MG_DESCENT_SMOOTHER_N_ITER_D` | integer | Number of iterations for descent smoother on device. |

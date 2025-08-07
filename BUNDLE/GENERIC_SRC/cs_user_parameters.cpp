@@ -171,6 +171,12 @@ cs_user_linear_solvers(void)
           smoother_type[i] = CS_SLES_FCG;
         else if (strcmp(s_mgt[i], "jacobi") == 0)
           smoother_type[i] = CS_SLES_JACOBI;
+        else if (strcmp(s_mgt[i], "l1_jacobi") == 0)
+          smoother_type[i] = CS_SLES_L1_JACOBI;
+        else if (strcmp(s_mgt[i], "relaxed_jacobi") == 0)
+          smoother_type[i] = CS_SLES_R_JACOBI;
+        else if (strcmp(s_mgt[i], "sr_jacobi") == 0)
+          smoother_type[i] = CS_SLES_SR_JACOBI;
         else if (strcmp(s_mgt[i], "gs") == 0)
           smoother_type[i] = CS_SLES_P_GAUSS_SEIDEL;
         else if (strcmp(s_mgt[i], "sgs") == 0)
