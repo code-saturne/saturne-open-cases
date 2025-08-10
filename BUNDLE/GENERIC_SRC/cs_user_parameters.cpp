@@ -175,8 +175,10 @@ cs_user_linear_solvers(void)
           smoother_type[i] = CS_SLES_L1_JACOBI;
         else if (strcmp(s_mgt[i], "relaxed_jacobi") == 0)
           smoother_type[i] = CS_SLES_R_JACOBI;
-        else if (strcmp(s_mgt[i], "sr_jacobi") == 0)
-          smoother_type[i] = CS_SLES_SR_JACOBI;
+        else if (strcmp(s_mgt[i], "rj2") == 0)
+          smoother_type[i] = CS_SLES_RJ2;
+        else if (strcmp(s_mgt[i], "rj3") == 0)
+          smoother_type[i] = CS_SLES_RJ3;
         else if (strcmp(s_mgt[i], "gs") == 0)
           smoother_type[i] = CS_SLES_P_GAUSS_SEIDEL;
         else if (strcmp(s_mgt[i], "sgs") == 0)
@@ -220,6 +222,9 @@ cs_user_linear_solvers(void)
     }
 
     if (   smoother_type[2] == CS_SLES_JACOBI
+        || smoother_type[2] == CS_SLES_R_JACOBI
+        || smoother_type[3] == CS_SLES_RJ2
+        || smoother_type[3] == CS_SLES_RJ3
         || smoother_type[2] == CS_SLES_P_GAUSS_SEIDEL
         || smoother_type[2] == CS_SLES_P_SYM_GAUSS_SEIDEL)
       precision_mult_coarse = -1.;
@@ -370,7 +375,7 @@ cs_user_linear_solvers(void)
           if (i == 0)
             n_max_iter[i] = 2;
           else
-            n_max_iter[i] = 3;
+            n_max_iter[i] = 4;
         }
         else
           n_max_iter[i] *= 3;
@@ -380,6 +385,14 @@ cs_user_linear_solvers(void)
       case CS_SLES_TS_F_GAUSS_SEIDEL:
         smoother_type[i] = CS_SLES_JACOBI;
         n_max_iter[i] = 2;
+        break;
+      case CS_SLES_JACOBI:
+        [[fallthrough]];
+      case CS_SLES_R_JACOBI:
+        [[fallthrough]];
+      case CS_SLES_RJ2:
+        break;
+      case CS_SLES_RJ3:
         break;
       default:
         smoother_type[i] = CS_SLES_FCG;
@@ -404,6 +417,22 @@ cs_user_linear_solvers(void)
         else if (strcmp(s_mgt[i], "jacobi") == 0) {
           smoother_type[i] = CS_SLES_JACOBI;
           nit_d = 2, nit_a = 4;
+        }
+        else if (strcmp(s_mgt[i], "l1_jacobi") == 0) {
+          smoother_type[i] = CS_SLES_L1_JACOBI;
+          nit_d = 2, nit_a = 4;
+        }
+        else if (strcmp(s_mgt[i], "relaxed_jacobi") == 0) {
+          smoother_type[i] = CS_SLES_R_JACOBI;
+          nit_d = 3, nit_a = 3;
+        }
+        else if (strcmp(s_mgt[i], "rj2") == 0) {
+          smoother_type[i] = CS_SLES_RJ2;
+          nit_d = 2, nit_a = 2;
+        }
+        else if (strcmp(s_mgt[i], "rj3") == 0) {
+          smoother_type[i] = CS_SLES_RJ3;
+          nit_d = 3, nit_a = 3;
         }
         else
           bft_error(__FILE__, __LINE__, 0,
