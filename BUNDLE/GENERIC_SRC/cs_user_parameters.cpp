@@ -223,8 +223,8 @@ cs_user_linear_solvers(void)
 
     if (   smoother_type[2] == CS_SLES_JACOBI
         || smoother_type[2] == CS_SLES_R_JACOBI
-        || smoother_type[3] == CS_SLES_RJ2
-        || smoother_type[3] == CS_SLES_RJ3
+        || smoother_type[2] == CS_SLES_RJ2
+        || smoother_type[2] == CS_SLES_RJ3
         || smoother_type[2] == CS_SLES_P_GAUSS_SEIDEL
         || smoother_type[2] == CS_SLES_P_SYM_GAUSS_SEIDEL)
       precision_mult_coarse = -1.;
