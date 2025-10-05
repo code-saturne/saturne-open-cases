@@ -26,16 +26,15 @@
 
 /*----------------------------------------------------------------------------*/
 
-#include "cs_defs.h"
+#include "cs_headers.h"
 
 /*----------------------------------------------------------------------------
- * Standard C library headers
+ * Standard library headers
  *----------------------------------------------------------------------------*/
 
 #include <assert.h>
 #include <math.h>
 #include <string.h>
-#include <stdio.h>
 
 #if defined(HAVE_MPI)
 #include <mpi.h>
@@ -59,8 +58,6 @@
  * Local headers
  *----------------------------------------------------------------------------*/
 
-#include "cs_headers.h"
-
 /*----------------------------------------------------------------------------*/
 
 BEGIN_C_DECLS
@@ -80,7 +77,7 @@ BEGIN_C_DECLS
  *============================================================================*/
 
 /*----------------------------------------------------------------------------*/
-/*!
+/*
  * \brief Define linear solver options.
  *
  * This function is called at the setup stage, once user and most model-based

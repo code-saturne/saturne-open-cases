@@ -26,20 +26,18 @@
 
 /*----------------------------------------------------------------------------*/
 
-#include "base/cs_defs.h"
+#include "cs_headers.h"
 
 /*----------------------------------------------------------------------------
- * Standard C library headers
+ * Standard library headers
  *----------------------------------------------------------------------------*/
 
 #include "stdlib.h"
 #include "string.h"
 
 /*----------------------------------------------------------------------------
- *  Local headers
+ * Local headers
  *----------------------------------------------------------------------------*/
-
-#include "cs_headers.h"
 
 /*----------------------------------------------------------------------------*/
 
@@ -58,7 +56,7 @@ static const double  t_snap[] = {750.0};
  *============================================================================*/
 
 /*----------------------------------------------------------------------------*/
-/*!
+/*
  * \brief Define post-processing writers.
  *
  * The default output format and frequency may be configured, and additional
@@ -89,7 +87,7 @@ cs_user_postprocess_writers(void)
 }
 
 /*----------------------------------------------------------------------------*/
-/*!
+/*
  * \brief Define post-processing meshes.
  *
  * The main post-processing meshes may be configured, and additional
