@@ -44,11 +44,11 @@ SetActiveView(renderView1)
 # ----------------------------------------------------------------
 
 # create a new 'EnSight Reader'
-rESULTS_FLUID_DOMAINcase = EnSightReader(registrationName='catalyst', CaseFileName='./postprocessing/RESULTS_FLUID_DOMAIN.case')
-rESULTS_FLUID_DOMAINcase.CellArrays = ['Velocity', 'Pressure', 'k', 'epsilon', 'TurbVisc', 'total_pressure', 'Local_Time_Step']
+catalyst = EnSightReader(registrationName='catalyst', CaseFileName='./postprocessing/RESULTS_FLUID_DOMAIN.case')
+catalyst.CellArrays = ['Velocity', 'Pressure', 'k', 'epsilon', 'TurbVisc', 'total_pressure', 'Local_Time_Step']
 
 # create a new 'Slice'
-slice1 = Slice(registrationName='Slice1', Input=rESULTS_FLUID_DOMAINcase)
+slice1 = Slice(registrationName='Slice1', Input=catalyst)
 slice1.SliceType = 'Plane'
 slice1.HyperTreeGridSlicer = 'Plane'
 slice1.SliceOffsetValues = [0.0]
