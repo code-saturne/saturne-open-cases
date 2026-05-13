@@ -1,0 +1,28 @@
+# Downloaded mesh and restart artefacts (fetched by WINDSOR/fetch_data.sh
+# or BUNDLE preprocess steps). Their absence is normal in a fresh clone.
+*.cgns
+*.med
+*.csm
+mesh_output*
+mesh_input/
+
+# code_saturne run artefacts
+RESU/
+RESU_COUPLING/
+RESTART/
+
+# Build / compile artefacts
+*.o
+*.so
+*.lo
+*.la
+.libs/
+src_saturne/
+cs_solver
+
+# Editor / OS scratch
+*~
+*.swp
+*.bak
+.DS_Store
+__pycache__/
