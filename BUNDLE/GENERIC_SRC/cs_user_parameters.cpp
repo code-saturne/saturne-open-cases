@@ -528,6 +528,35 @@ cs_user_linear_solvers(void)
 
 #endif /* defined(HAVE_AMGX) */
 
+#if defined(HAVE_MUMPS)
+
+  if (strstr(s_sles_type, "mumps") != nullptr) {
+
+    const char *system_name = nullptr;
+
+    cs_param_sles_t  *slesp = cs_param_sles_create(CS_F_(p)->id, system_name);
+    slesp->solver = CS_PARAM_SOLVER_MUMPS;
+    cs_param_sles_mumps(slesp,
+                        false,                     /* single-precision ? */
+                        CS_PARAM_MUMPS_FACTO_LU);  /* type of facto. */
+
+    // CS_PARAM_MUMPS_FACTO_LDLT_SYM or CS_PARAM_MUMPS_FACTO_LDLT_SPD
+
+    cs_sles_mumps_setup_hook_t  *setup_hook = nullptr;
+
+    cs_sles_mumps_t *c = cs_sles_mumps_define(CS_F_(p)->id,
+                                              nullptr,
+                                              slesp,
+                                              setup_hook,
+                                              nullptr);
+
+    cs_sles_mumps_set_keep_data(c, true);
+
+    return;
+  }
+
+#endif /* defined(HAVE_MUMPS) */
+
 #if defined(HAVE_CUDSS)
 
   if (strstr(s_sles_type, "cudss") != nullptr) {
