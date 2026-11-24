@@ -7,7 +7,7 @@
 /*
   This file is part of code_saturne, a general-purpose CFD tool.
 
-  Copyright (C) 1998-2025 EDF S.A.
+  Copyright (C) 1998-2026 EDF S.A.
 
   This program is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -36,10 +36,6 @@
 #include <math.h>
 #include <string.h>
 
-#if defined(HAVE_MPI)
-#include <mpi.h>
-#endif
-
 /* Avoid warnings due to previous values */
 #undef PACKAGE_BUGREPORT
 #undef PACKAGE_NAME
@@ -58,27 +54,13 @@
  * Local headers
  *----------------------------------------------------------------------------*/
 
-/*----------------------------------------------------------------------------*/
-
-BEGIN_C_DECLS
-
-/*----------------------------------------------------------------------------*/
-/*!
- * \file cs_user_parameters.cpp
- *
- * \brief User functions for input of calculation parameters.
- *
- * See \ref parameters for examples.
- */
-/*----------------------------------------------------------------------------*/
-
 /*============================================================================
  * User function definitions
  *============================================================================*/
 
 /*----------------------------------------------------------------------------*/
 /*
- * \brief Define linear solver options.
+ * Define linear solver options.
  *
  * This function is called at the setup stage, once user and most model-based
  * fields are defined.
@@ -576,5 +558,3 @@ cs_user_linear_solvers(void)
 }
 
 /*----------------------------------------------------------------------------*/
-
-END_C_DECLS

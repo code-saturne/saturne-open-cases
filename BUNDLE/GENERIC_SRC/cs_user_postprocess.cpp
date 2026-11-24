@@ -7,7 +7,7 @@
 /*
   This file is part of code_saturne, a general-purpose CFD tool.
 
-  Copyright (C) 1998-2025 EDF S.A.
+  Copyright (C) 1998-2026 EDF S.A.
 
   This program is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -39,17 +39,9 @@
  * Local headers
  *----------------------------------------------------------------------------*/
 
-/*----------------------------------------------------------------------------*/
-
-BEGIN_C_DECLS
-
 /*============================================================================
  * Local (user defined) function definitions
  *============================================================================*/
-
-static int  snap_id = 0.;
-static const int  n_snaps = 1;
-static const double  t_snap[] = {750.0};
 
 /*============================================================================
  * User function definitions
@@ -57,7 +49,7 @@ static const double  t_snap[] = {750.0};
 
 /*----------------------------------------------------------------------------*/
 /*
- * \brief Define post-processing writers.
+ * Define post-processing writers.
  *
  * The default output format and frequency may be configured, and additional
  * post-processing writers allowing outputs in different formats or with
@@ -88,7 +80,7 @@ cs_user_postprocess_writers(void)
 
 /*----------------------------------------------------------------------------*/
 /*
- * \brief Define post-processing meshes.
+ * Define post-processing meshes.
  *
  * The main post-processing meshes may be configured, and additional
  * post-processing meshes may be defined as a subset of the main mesh's
@@ -107,4 +99,3 @@ cs_user_postprocess_meshes(void)
 
 /*----------------------------------------------------------------------------*/
 
-END_C_DECLS

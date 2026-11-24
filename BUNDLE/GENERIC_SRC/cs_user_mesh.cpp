@@ -15,7 +15,7 @@
 /*
   This file is part of code_saturne, a general-purpose CFD tool.
 
-  Copyright (C) 1998-2025 EDF S.A.
+  Copyright (C) 1998-2026 EDF S.A.
 
   This program is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free Software
@@ -51,10 +51,6 @@
  * Local headers
  *----------------------------------------------------------------------------*/
 
-/*----------------------------------------------------------------------------*/
-
-BEGIN_C_DECLS
-
 static int _n_tubes = 1;
 
 /*============================================================================
@@ -63,7 +59,7 @@ static int _n_tubes = 1;
 
 /*----------------------------------------------------------------------------*/
 /*
- * \brief Define mesh files to read and optional associated transformations.
+ * Define mesh files to read and optional associated transformations.
  */
 /*----------------------------------------------------------------------------*/
 
@@ -142,7 +138,7 @@ cs_user_mesh_input(void)
 
 /*----------------------------------------------------------------------------*/
 /*
- * \brief Define mesh joinings.
+ * Define mesh joinings.
  */
 /*----------------------------------------------------------------------------*/
 
@@ -161,7 +157,7 @@ cs_user_join(void)
 
 /*----------------------------------------------------------------------------*/
 /*
- * \brief Define periodic faces.
+ * Define periodic faces.
  */
 /*----------------------------------------------------------------------------*/
 
@@ -192,4 +188,3 @@ cs_user_periodicity(void)
 
 /*----------------------------------------------------------------------------*/
 
-END_C_DECLS
